@@ -10,7 +10,7 @@ Modelo de Ising implementado en Fortran 90 como parte de la materia Introducció
 
 ### Archivos de salida
 
-- `output.dat`: 2 columnas y (steps / L * L) filas. Contiene valores de Energía y Magnetización sampleados de la secuencia de pasos de Montecarlo.
+- `output.dat`: 3 columnas y (steps / L * L) filas. Contiene valores de Energía y Magnetización sampleados de la secuencia de pasos de Montecarlo, y la fracción de flips aceptados.
 - `averages.dat`: 2 filas: Una con títulos y otra con 4 datos promediados sobre las configuraciones sampleadas: Energía media, Magnetización media, Energía^2 media, y Magnetización^2 media. Si bien se calculan dentro del programa `ising`, pueden obtenerse a partir de `output.dat` (y deben coincidir).
 - `matriz.dat`: Última configuración obtenida. Sobreescribe a la configuración de entrada.
 - `seed.dat`: Archivo utilizado por `ziggurat` para obtener números aleatorios. Se usa tanto como entrada como salida.

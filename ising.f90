@@ -2,7 +2,7 @@ program ising
 use ziggurat
 implicit none
 logical :: es, ms
-integer :: seed, n, i, j, k, L, s, pv, M, dM, pasos, n_write
+integer :: seed, n, i, j, k, L, s, pv, M, dM, pasos, n_write, aceptados
 real(8) :: Jx, E, dE, x,r, prob, Temp, E_avg, E2_avg, M_avg, M2_avg, p_vec(2)
 integer, allocatable :: a(:,:)
 
@@ -91,6 +91,7 @@ Jx = 1.0
     ! Las calculo una vez y las guardo en un vector.
     p_vec = exp(-dble(abs(Jx*(/4,8/)))/Temp)
     
+    aceptados = 0
     do k = 1, pasos
         i = floor(1 + uni()*L)
         j = floor(1 + uni()*L)
@@ -101,11 +102,13 @@ Jx = 1.0
 
         if (dE <= 0) then
             a(i, j) = -s
+            aceptados = aceptados + 1
         else
             r = uni()
             prob = p_vec(abs(pv)/2)
             if (r < prob) then
                 a(i, j) = -s
+                aceptados = aceptados + 1
             else
                 dE = 0
                 dM = 0
@@ -119,9 +122,9 @@ Jx = 1.0
         E = E + dE
         M = M + dM
         
-        ! Grabo 1 dato de E y M cada n_write iteraciones
+        ! Grabo 1 dato de E y M cada n_write iteraciones y la fraccion de flips aceptados
         if (mod(k,n_write)==0) then
-            write(13,*) E, M
+            write(13,*) E, M, dble(aceptados)/dble(k)
             ! Actualizo los promedios cada n_write iteraciones
             M_avg = M_avg + M
             M2_avg = M2_avg + M*M
