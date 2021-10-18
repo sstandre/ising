@@ -5,7 +5,7 @@ import os
 from subprocess import call
 from shutil import copy
 
-L = 10                          # Tamaño de la red (lado)
+L = 20                          # Tamaño de la red (lado)
 steps = 1_000_000               # Pasos de MC para producción (~L^2 * 1M)
 steps_term = int(0.1*steps)     # Pasos de MC para termalización (~0.1*steps)
 # La secuencia de temperatura se define con una T inicial, seguida de pares (step, end)
@@ -72,7 +72,7 @@ def main(args):
                 if not os.path.exists(dirname):
                     os.makedirs(dirname)
                 
-                print(f'Inciando trabajo {job}')
+                print(f'Inciando trabajo {job}, a temperatura {temp:.3}')
                 # corrida de termalizacion
                 run_job(L, steps_term, temp)
                 # corrida final
