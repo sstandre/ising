@@ -4,7 +4,7 @@ Modelo de Ising implementado en Fortran 90 como parte de la materia Introducció
 ## Cómo correr la simulación
 
 - Editar el archivo `input.dat`. La primera línea tiene los nombres de las variables de ingreso y es ignorada por el programa. La segunda tiene los valores de las variables.
-- Compilar el programa de Frontran con `make`.
+- Compilar el programa de Fortran con `make`.
 - Correr el ejecutable resultante: `./ising`.
 - Si existe un archivo `matriz.dat`, el programa lo toma como arreglo inicial para la simulación. Debe ser un arreglo de LxL de 1 y -1. Al finalizar la simulación, el programa sobreescribe `matriz.dat` con la última configuración simulada. Precaución: al cambiar de tamaño de red, los archivos `matriz.dat` no funcionarán para la nueva simulación.
 
