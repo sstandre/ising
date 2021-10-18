@@ -67,15 +67,16 @@ def main(args):
             print('*'*30)
             print(f'Corrida a T={temp:.3}\n')
             
+            # corrida de termalizacion
+            run_job(L, steps_term, temp)
+                
             for job in range(1,njobs+1):
                 dirname = f'{tempdir}/{job:02}_JOB'
                 if not os.path.exists(dirname):
                     os.makedirs(dirname)
                 
                 print(f'Inciando trabajo {job}, a temperatura {temp:.3}')
-                # corrida de termalizacion
-                run_job(L, steps_term, temp)
-                # corrida final
+                # corrida de produccion
                 run_job(L, steps, temp)
                 
                 for file in data_files:
