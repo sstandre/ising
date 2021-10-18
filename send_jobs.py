@@ -54,24 +54,25 @@ def main(args):
         except ValueError:
             print('El argumento debe ser un numero entero')
             return 1
-
-        for job in range(1,njobs+1):
-            jobdir = f'{L}_size/{job:02}_JOB'
-            if os.path.exists(jobdir):
-                print(f'El trabajo {job} ya existe, continuando con el siguiente.')
-                continue
-            print('*'*30)
-            print(f'Inciando trabajo {job}')
-            if os.path.exists('matriz.dat'):
+        
+        if os.path.exists('matriz.dat'):
                 print('Quitando matriz.dat para trabajo inicial.')
                 os.remove('matriz.dat')
 
-            for temp in temperatures:
-                dirname = f'{jobdir}/{temp:.3}_temp'
+        for temp in temperatures:
+            tempdir = f'{L}_size/{temp:.3}_temp'
+            if os.path.exists(tempdir):
+                print(f'El directorio {tempdir} ya existe, continuando con el siguiente.')
+                continue
+            print('*'*30)
+            print(f'Corrida a T={temp:.3}\n')
+            
+            for job in range(1,njobs+1):
+                dirname = f'{tempdir}/{job:02}_JOB'
                 if not os.path.exists(dirname):
                     os.makedirs(dirname)
-
-                print(f'Corrida a T={temp:.3}\n')
+                
+                print(f'Inciando trabajo {job}')
                 # corrida de termalizacion
                 run_job(L, steps_term, temp)
                 # corrida final

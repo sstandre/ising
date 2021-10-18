@@ -15,7 +15,7 @@ Jx = 1.0
         open(unit=10,file='seed.dat',status='old')
         read(10,*) seed
         close(10)
-        print *,"  * Leyendo semilla de archivo seed.dat"
+        ! print *,"  * Leyendo semilla de archivo seed.dat"
     else
         seed = 24583490
     end if
