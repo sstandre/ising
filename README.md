@@ -52,6 +52,7 @@ Esto crea (o sobreescribe) el archivo `alldata.dat`, con el cual se pueden anali
 ## Análisis de datos en Jupyter
 
 El notebook `analisis.ipynb` contiene los cálculos y las figuras realizadas con la información de `alldata.dat`. Al ejecutarlo se llama a `recopilar_data.py` para asegurarse de tener los datos actualizados.
+
 Para correr este notebook tenemos que usar Jupyter, que no está por defecto en Ubunutu. Podemos instalarlo en un entorno virtual:
  -`sudo apt install python-venv`
  -`python -m venv .venv`
