@@ -1,0 +1,5 @@
+*_size
+__pycache__
+.venv
+*.o
+*.mod
