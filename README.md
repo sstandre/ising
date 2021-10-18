@@ -23,25 +23,25 @@ Modelo de Ising implementado en Fortran 90 como parte de la materia Introducció
 Las distintas simulaciones se organizan en un árbol de archivos. Por ejemplo, de la siguiente forma:
 ```
 20_size/
-    |____01_JOB/
-    |       |____0.1_temp/
+    |____0.1_temp/
+    |       |____01_JOB/
     |       |       |____output.dat
     |       |       |____averages.dat
     |       |       |____matriz.dat
     |       |       |____output.dat
-    |       |____0.2_temp/
+    |       |____02_JOB/
     |       |       |____output.dat
     |       |       |____averages.dat
     |       |       |____matriz.dat
     |       |       |____output.dat
     |       |       ...
-    |       |____4.0_temp/
+    |       |____10_JOB/
     |               ...
-    |____02_JOB/
-    |       |____0.1_temp/
+    |____0.2_temp/
+    |       |____01_JOB/
     |               ...
 100_size/
-    |____01_JOB/
+    |____0.1_temp/
             ...
 ```
 
@@ -61,4 +61,3 @@ Para correr este notebook tenemos que usar Jupyter, que no está por defecto en 
  - `source .venv/bin/activate`
  Ahora podemos instalar Jupyter y otros paquetes mediante `pip`:
   - `pip install -r requirements.txt`
-  - 
