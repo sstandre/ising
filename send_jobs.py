@@ -5,9 +5,12 @@ import os
 from subprocess import call
 from shutil import copy
 
-L = 10
-steps = 1_000_000
-steps_term = int(0.1*steps)
+L = 10                          # Tamaño de la red (lado)
+steps = 1_000_000               # Pasos de MC para producción (~L^2 * 1M)
+steps_term = int(0.1*steps)     # Pasos de MC para termalización (~0.1*steps)
+# La secuencia de temperatura se define con una T inicial, seguida de pares (step, end)
+# que definen rampas del estilo: [start, start+step, start+2*step+..., end]
+# Luego la secuencia se invierte y las simulaciones se corren de T max a T min.
 temp_sequence = (
     0.1,                #   start
     (0.1,1.6),          #   (step, end)
