@@ -146,8 +146,8 @@ Jx = 1.0
 
 ! Guardo los promedios en un archivo
     open(unit=14,file='averages.dat',action='write',status='replace')
-    write(14,*) 'E     E2     M     M2'
-    write(14, *) E_avg, E2_avg, M_avg, M2_avg
+    write(14,*) 'E     E2     M     M2     Aceptados'
+    write(14, *) E_avg, E2_avg, M_avg, M2_avg, dble(aceptados)/dble(k)
     close(14) 
 
 ! Guardar la ultima matriz en un archivo
