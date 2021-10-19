@@ -28,8 +28,9 @@ def write_averages(data):
 
 
 HEADER = '\t'.join((
-    'size', 
-    'temperature', 
+    'size',
+    'B',
+    'temperature',
     'job', 
     'energy', 
     'energy^2', 
@@ -39,7 +40,7 @@ HEADER = '\t'.join((
     ))+'\n'
 
 OUTFILE = 'alldata.dat'
-NAMES = ['size', 'temp', 'JOB']
+NAMES = ['size', 'B', 'temp', 'JOB']
 
 with open(OUTFILE, 'w') as datafile:
     datafile.write(HEADER)
