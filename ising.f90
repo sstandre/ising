@@ -3,7 +3,7 @@ use ziggurat
 implicit none
 logical :: es, ms
 integer :: seed, n, i, j, k, L, s, pv, M, dM, pasos, n_write, aceptados
-real(8) :: Jx, E, dE, x,r, prob, Temp, E_avg, E2_avg, M_avg, M2_avg, p_vec(2)
+real(8) :: Jx, E, dE, x,r, prob, Temp, E_avg, E2_avg, M_avg, M2_avg, p_vec(2), B
 integer, allocatable :: a(:,:)
 
 Jx = 1.0
@@ -27,7 +27,7 @@ Jx = 1.0
 !   Leer variables del archivo input.dat
     open(unit=11,file='input.dat',action='read',status='old')
     read(11,*) 
-    read(11,*) L, pasos, Temp
+    read(11,*) L, pasos, Temp, B
     close(11)
 
     n_write = L*L
@@ -68,7 +68,7 @@ Jx = 1.0
         do i = 1, L
             s = a(i,j)
             pv = a(i+1,j)+a(i,j+1)+a(i-1,j)+a(i,j-1)
-            E = E - Jx * s * pv
+            E = E - Jx * s * pv - 2 * B * s     ! Sumo dos veces la parte de campo magnetico porque al final divido por 2
             M = M + s
         end do
     end do
@@ -97,7 +97,7 @@ Jx = 1.0
         j = floor(1 + uni()*L)
         s = a(i, j)
         pv = a(i+1,j)+a(i,j+1)+a(i-1,j)+a(i,j-1)
-        dE = 2*s*pv*Jx
+        dE = 2*s*pv*Jx + 2*B*s
         dM = -2*s
 
         if (dE <= 0) then

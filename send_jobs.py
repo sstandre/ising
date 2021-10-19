@@ -5,6 +5,7 @@ import os
 from subprocess import call
 from shutil import copy
 
+B = 0.0                         # Campo magnético
 L = 20                          # Tamaño de la red (lado)
 steps = 1_000_000               # Pasos de MC para producción (~L^2 * 1M)
 steps_term = int(0.1*steps)     # Pasos de MC para termalización (~0.1*steps)
@@ -34,9 +35,9 @@ temperatures = make_interval(*temp_sequence)
 temperatures = temperatures[::-1]
 # temperatures = [1.0]
 
-def run_job(L, steps, temp):
-    header = 'L\tpasos\tTemp\n'
-    data = f'{L}\t{steps}\t{temp:.3}\n'
+def run_job(L, steps, temp, B):
+    header = 'L\tpasos\tTemp\tB\n'
+    data = f'{L}\t{steps}\t{temp:.3}\t{B:.3}\n'
     with open('input.dat','w') as infile:
         infile.write(header)
         infile.write(data)
@@ -60,7 +61,7 @@ def main(args):
                 os.remove('matriz.dat')
 
         for temp in temperatures:
-            tempdir = f'{L}_size/{temp:.3}_temp'
+            tempdir = f'{L}_size/{B:.3}_B/{temp:.3}_temp'
             # if os.path.exists(tempdir):
             #     print(f'El directorio {tempdir} ya existe, continuando con el siguiente.')
             #     continue
@@ -68,7 +69,7 @@ def main(args):
             print(f'Corrida a T={temp:.3}\n')
             
             # corrida de termalizacion
-            run_job(L, steps_term, temp)
+            run_job(L, steps_term, temp, B)
                 
             for job in range(1,njobs+1):
                 dirname = f'{tempdir}/{job:02}_JOB'
@@ -77,7 +78,7 @@ def main(args):
                 
                 print(f'Inciando trabajo {job}, a temperatura {temp:.3}')
                 # corrida de produccion
-                run_job(L, steps, temp)
+                run_job(L, steps, temp, B)
                 
                 for file in data_files:
                     copy(file, dirname)
