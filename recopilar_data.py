@@ -3,7 +3,7 @@
 import sys
 import os
 
-def transverse_folders(data, names, level=0):
+def traverse_folders(data, names, level=0):
     if level >= len(names):
         write_averages(data)
         return
@@ -14,7 +14,7 @@ def transverse_folders(data, names, level=0):
             data_new = data + [dirname.split('_')[0]]
             
             os.chdir(dirname)
-            transverse_folders(data_new, names, level+1)
+            traverse_folders(data_new, names, level+1)
             os.chdir('..')
 
 
@@ -43,4 +43,4 @@ NAMES = ['size', 'temp', 'JOB']
 with open(OUTFILE, 'w') as datafile:
     datafile.write(HEADER)
     data = []
-    transverse_folders(data, NAMES)
+    traverse_folders(data, NAMES)
