@@ -23,24 +23,31 @@ Modelo de Ising implementado en Fortran 90 como parte de la materia Introducció
 Las distintas simulaciones se organizan en un árbol de archivos. Por ejemplo, de la siguiente forma:
 ```
 20_size/
-    |____0.1_temp/
-    |       |____01_JOB/
-    |       |       |____output.dat
-    |       |       |____averages.dat
-    |       |       |____matriz.dat
-    |       |____02_JOB/
-    |       |       |____output.dat
-    |       |       |____averages.dat
-    |       |       |____matriz.dat
-    |       |       ...
-    |       |____10_JOB/
-    |               ...
-    |____0.2_temp/
-    |       |____01_JOB/
-    |               ...
+    |____0.0_B/
+    |       |____0.1_temp/
+    |       |       |____01_JOB/
+    |       |       |       |____output.dat
+    |       |       |       |____averages.dat
+    |       |       |       |____matriz.dat
+    |       |       |____02_JOB/
+    |       |       |       |____output.dat
+    |       |       |       |____averages.dat
+    |       |       |       |____matriz.dat   
+    |       |       |      ...
+    |       |       |____10_JOB/
+    |       |              ...
+    |       |____0.2_temp/
+    |       |      |____01_JOB/
+    |       |      ...
+    |       |____4.0_temp/
+    |              ...
+    |____0.1_B/
+    |       |____0.1_temp/
+    |              ...
+    |
 100_size/
-    |____0.1_temp/
-            ...
+    |____0.0_B/
+         ...
 ```
 
 Toda la información contenida en los distintos `averages.dat` se puede recopilar en un solo archivo mediante:
