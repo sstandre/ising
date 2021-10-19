@@ -28,12 +28,10 @@ Las distintas simulaciones se organizan en un árbol de archivos. Por ejemplo, d
     |       |       |____output.dat
     |       |       |____averages.dat
     |       |       |____matriz.dat
-    |       |       |____output.dat
     |       |____02_JOB/
     |       |       |____output.dat
     |       |       |____averages.dat
     |       |       |____matriz.dat
-    |       |       |____output.dat
     |       |       ...
     |       |____10_JOB/
     |               ...
