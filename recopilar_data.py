@@ -11,10 +11,10 @@ def transverse_folders(data, names, level=0):
         name = names[level]
     for dirname in os.listdir():
         if os.path.isdir(dirname) and dirname.endswith(f'_{name}'):
+            data_new = data + [dirname.split('_')[0]]
+            
             os.chdir(dirname)
-
-            data_out = data + [dirname.split('_')[0]]
-            transverse_folders(data_out, names, level+1)
+            transverse_folders(data_new, names, level+1)
             os.chdir('..')
 
 
