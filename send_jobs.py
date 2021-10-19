@@ -61,9 +61,9 @@ def main(args):
 
         for temp in temperatures:
             tempdir = f'{L}_size/{temp:.3}_temp'
-            if os.path.exists(tempdir):
-                print(f'El directorio {tempdir} ya existe, continuando con el siguiente.')
-                continue
+            # if os.path.exists(tempdir):
+            #     print(f'El directorio {tempdir} ya existe, continuando con el siguiente.')
+            #     continue
             print('*'*30)
             print(f'Corrida a T={temp:.3}\n')
             
