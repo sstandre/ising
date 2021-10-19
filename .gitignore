@@ -3,3 +3,7 @@ __pycache__
 .venv
 *.o
 *.mod
+ising
+matriz.dat
+output.dat
+seed.dat
