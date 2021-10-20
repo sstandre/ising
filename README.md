@@ -1,24 +1,25 @@
 # Ising
-Modelo de Ising implementado en Fortran 90 como parte de la materia Introducción a la Simulación computacional 
+Modelo de Ising implementado en Fortran 90 como parte de la materia Introducción a la Simulación computacional.
+www.tandar.cnea.gov.ar/~pastorin/cursos/intro_sims/
 
 ## Cómo correr la simulación
 
 - Editar el archivo `input.dat`. La primera línea tiene los nombres de las variables de ingreso y es ignorada por el programa. La segunda tiene los valores de las variables.
-- Compilar el programa de Fortran con `make`.
-- Correr el ejecutable resultante: `./ising`.
+- Compilar el programa de Fortran con `make`
+- Correr el ejecutable resultante: `./ising`
 - Si existe un archivo `matriz.dat`, el programa lo toma como arreglo inicial para la simulación. Debe ser un arreglo de LxL de 1 y -1. Al finalizar la simulación, el programa sobreescribe `matriz.dat` con la última configuración simulada. Precaución: al cambiar de tamaño de red, los archivos `matriz.dat` no funcionarán para la nueva simulación.
 
 ### Archivos de salida
 
 - `output.dat`: 3 columnas y (steps / L * L) filas. Contiene valores de Energía y Magnetización sampleados de la secuencia de pasos de Montecarlo, y la fracción de flips aceptados.
-- `averages.dat`: 2 filas: Una con títulos y otra con 4 datos promediados sobre las configuraciones sampleadas: Energía media, Magnetización media, Energía^2 media, y Magnetización^2 media. Si bien se calculan dentro del programa `ising`, pueden obtenerse a partir de `output.dat` (y deben coincidir).
+- `averages.dat`: 2 filas: Una con títulos y otra con 5 datos. Lo primeros 4 son promedios sobre las configuraciones sampleadas: Energía media, Magnetización media, Energía^2 media, y Magnetización^2 media. El último valor corresponde a la fracción de pasos de MC aceptados. Si bien todas las cantidades se calculan dentro del programa `ising`, pueden obtenerse a partir de `output.dat` (y deben coincidir)
 - `matriz.dat`: Última configuración obtenida. Sobreescribe a la configuración de entrada.
 - `seed.dat`: Archivo utilizado por `ziggurat` para obtener números aleatorios. Se usa tanto como entrada como salida.
 
 ## Cómo hacer un barrido de temperaturas
 
-- Editar en `send_jobs.py` el tamaño de red y el numero de pasos de MC.
-- Ejecutar `python3 send_jobs.py NJOBS` donde NJOBS es el número de veces que se hace el barrido.
+- Editar en `send_jobs.py` el tamaño de red, el numero de pasos de MC y el valor del campo magnético (B).
+- Ejecutar `python3 send_jobs.py NJOBS` donde NJOBS es el número de corridas que hace en cada temperatura.
 
 Las distintas simulaciones se organizan en un árbol de archivos. Por ejemplo, de la siguiente forma:
 ```
