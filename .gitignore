@@ -8,4 +8,4 @@ __pycache__
 /output.dat
 /seed.dat
 /averages.dat
-/alldata.dat
+#/alldata.dat
