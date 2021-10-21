@@ -3,7 +3,7 @@ use ziggurat
 implicit none
 logical :: es, ms
 integer :: seed, n, i, j, k, L, s, pv, M, dM, pasos, n_write, aceptados
-real(8) :: Jx, E, dE, x,r, prob, Temp, E_avg, E2_avg, M_avg, M2_avg, p_vec(2), B
+real(8) :: Jx, E, dE, x,r, prob, Temp, E_avg, E2_avg, M_avg, M2_avg, B !, p_vec(2)
 integer, allocatable :: a(:,:)
 
 Jx = 1.0
@@ -86,10 +86,7 @@ Jx = 1.0
 
     ! Archivo para grabar los datos de E y M
     open(unit=13,file='output.dat',action='write',status='replace')
-    
-    ! Hay solo 2 posibilidades de transicion posibles, y dependen solo de T y Jx.
-    ! Las calculo una vez y las guardo en un vector.
-    p_vec = exp(-dble(abs(Jx*(/4,8/)))/Temp)
+
     
     aceptados = 0
     do k = 1, pasos
@@ -105,7 +102,7 @@ Jx = 1.0
             aceptados = aceptados + 1
         else
             r = uni()
-            prob = p_vec(abs(pv)/2)
+            prob = exp(-dE/Temp)
             if (r < prob) then
                 a(i, j) = -s
                 aceptados = aceptados + 1
