@@ -39,11 +39,14 @@ HEADER = '\t'.join((
     'aceptados'
     ))+'\n'
 
-OUTFILE = 'alldata.dat'
+OUTFILE = 'alldata2.dat'
+DATAFOLDER = 'data2'
 NAMES = ['size', 'B', 'temp', 'JOB']
+
 
 with open(OUTFILE, 'w') as datafile:
     datafile.write(HEADER)
     data = []
-    os.chdir('data')
+    os.chdir(DATAFOLDER)
     traverse_folders(data, NAMES)
+    os.chdir('..')

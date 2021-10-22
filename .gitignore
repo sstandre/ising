@@ -3,6 +3,7 @@ __pycache__
 *.o
 *.mod
 /data/
+/data2/
 /ising
 /matriz.dat
 /output.dat

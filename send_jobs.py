@@ -5,10 +5,10 @@ import os
 from subprocess import call
 from shutil import copy
 
-B = 0.0                         # Campo magnético
-L = 100                          # Tamaño de la red (lado)
-steps = 30_000_000               # Pasos de MC para producción (~L^2 * 1M)
-steps_term = int(0.1*steps)     # Pasos de MC para termalización (~0.1*steps)
+B = 0.0                 # Campo magnético
+L = 20                  # Tamaño de la red (lado)
+steps = 1_000_000         # Pasos de MC para producción (~L*L * 3k)
+steps_term = 0.1*steps      # Pasos de MC para termalización (~steps)
 # La secuencia de temperatura se define con una T inicial, seguida de pares (step, end)
 # que definen rampas del estilo: [start, start+step, start+2*step+..., end]
 # Luego la secuencia se invierte y las simulaciones se corren de T max a T min.
@@ -61,10 +61,10 @@ def main(args):
                 os.remove('matriz.dat')
 
         for temp in temperatures:
-            tempdir = f'data/{L}_size/{B:.3}_B/{temp:.3}_temp'
-            if os.path.exists(tempdir):
-                print(f'El directorio {tempdir} ya existe, continuando con el siguiente.')
-                continue
+            tempdir = f'data2/{L}_size/{B:.3}_B/{temp:.3}_temp'
+            # if os.path.exists(tempdir):
+            #     print(f'El directorio {tempdir} ya existe, continuando con el siguiente.')
+            #     continue
             print('*'*30)
             print(f'Corrida a T={temp:.3}\n')
             
