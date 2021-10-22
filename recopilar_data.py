@@ -39,8 +39,8 @@ HEADER = '\t'.join((
     'aceptados'
     ))+'\n'
 
-OUTFILE = 'alldata2.dat'
-DATAFOLDER = 'data2'
+OUTFILE = 'alldata.dat'
+DATAFOLDER = 'data'
 NAMES = ['size', 'B', 'temp', 'JOB']
 
 
