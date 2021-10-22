@@ -11,8 +11,8 @@ www.tandar.cnea.gov.ar/~pastorin/cursos/intro_sims/
 
 ### Archivos de salida
 
-- `output.dat`: 3 columnas y (steps / L * L) filas. Contiene valores de Energía y Magnetización sampleados de la secuencia de pasos de Montecarlo, y la fracción de flips aceptados.
-- `averages.dat`: 2 filas: Una con títulos y otra con 5 datos. Lo primeros 4 son promedios sobre las configuraciones sampleadas: Energía media, Magnetización media, Energía^2 media, y Magnetización^2 media. El último valor corresponde a la fracción de pasos de MC aceptados. Si bien todas las cantidades se calculan dentro del programa `ising`, pueden obtenerse a partir de `output.dat` (y deben coincidir)
+- `output.dat`: 2 columnas y (steps / L * L) filas. Contiene valores de Energía y Magnetización sampleados de la secuencia de pasos de Montecarlo.
+- `averages.dat`: 2 filas: Una con títulos y otra con 5 datos. Lo primeros 4 son promedios sobre todos los pasos de MC: Energía media, Magnetización media, Energía^2 media, y Magnetización^2 media. El último valor corresponde a la fracción de pasos de MC aceptados. Si bien todas las cantidades se calculan dentro del programa `ising`, pueden aproximarse a partir de `output.dat`.
 - `matriz.dat`: Última configuración obtenida. Sobreescribe a la configuración de entrada.
 - `seed.dat`: Archivo utilizado por `ziggurat` para obtener números aleatorios. Se usa tanto como entrada como salida.
 
@@ -21,33 +21,34 @@ www.tandar.cnea.gov.ar/~pastorin/cursos/intro_sims/
 - Editar en `send_jobs.py` el tamaño de red, el numero de pasos de MC y el valor del campo magnético (B).
 - Ejecutar `python3 send_jobs.py NJOBS` donde NJOBS es el número de corridas que hace en cada temperatura.
 
-Las distintas simulaciones se organizan en un árbol de archivos. Por ejemplo, de la siguiente forma:
+Las distintas simulaciones se organizan en el directorio `data/`. Por ejemplo, de la siguiente forma:
 ```
-20_size/
-    |____0.0_B/
-    |       |____0.1_temp/
-    |       |       |____01_JOB/
-    |       |       |       |____output.dat
-    |       |       |       |____averages.dat
-    |       |       |       |____matriz.dat
-    |       |       |____02_JOB/
-    |       |       |       |____output.dat
-    |       |       |       |____averages.dat
-    |       |       |       |____matriz.dat   
-    |       |       |      ...
-    |       |       |____10_JOB/
-    |       |              ...
-    |       |____0.2_temp/
-    |       |      |____01_JOB/
-    |       |      ...
-    |       |____4.0_temp/
-    |              ...
-    |____0.1_B/
-    |       |____0.1_temp/
-    |              ...
-    |
-100_size/
-    |____0.0_B/
+data/
+  |______20_size/
+            |____0.0_B/
+            |       |____0.1_temp/
+            |       |       |____01_JOB/
+            |       |       |       |____output.dat
+            |       |       |       |____averages.dat
+            |       |       |       |____matriz.dat
+            |       |       |____02_JOB/
+            |       |       |       |____output.dat
+            |       |       |       |____averages.dat
+            |       |       |       |____matriz.dat   
+            |       |       |      ...
+            |       |       |____10_JOB/
+            |       |              ...
+            |       |____0.2_temp/
+            |       |      |____01_JOB/
+            |       |      ...
+            |       |____4.0_temp/
+            |              ...
+            |____0.01_B/
+            |       |____0.1_temp/
+            |              ...
+            |
+        100_size/
+            |____0.0_B/
          ...
 ```
 
