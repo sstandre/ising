@@ -1,8 +1,8 @@
-*_size
 __pycache__
 .venv
 *.o
 *.mod
+/data/
 /ising
 /matriz.dat
 /output.dat

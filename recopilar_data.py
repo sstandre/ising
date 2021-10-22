@@ -45,4 +45,5 @@ NAMES = ['size', 'B', 'temp', 'JOB']
 with open(OUTFILE, 'w') as datafile:
     datafile.write(HEADER)
     data = []
+    os.chdir('data')
     traverse_folders(data, NAMES)

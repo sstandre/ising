@@ -61,7 +61,7 @@ def main(args):
                 os.remove('matriz.dat')
 
         for temp in temperatures:
-            tempdir = f'{L}_size/{B:.3}_B/{temp:.3}_temp'
+            tempdir = f'data/{L}_size/{B:.3}_B/{temp:.3}_temp'
             if os.path.exists(tempdir):
                 print(f'El directorio {tempdir} ya existe, continuando con el siguiente.')
                 continue
