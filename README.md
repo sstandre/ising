@@ -3,7 +3,7 @@ Modelo de Ising implementado en Fortran 90 como parte de la materia Introducció
 www.tandar.cnea.gov.ar/~pastorin/cursos/intro_sims/
 
 #### Autores 
-  - Augusto Román [augustojre](https://github.com/augustoojre)
+  - Augusto Román [augustojre](https://github.com/augustojre)
   - Simón Saint-André [sstandre](https://github.com/sstandre)
 
 ## Cómo correr una simulación
