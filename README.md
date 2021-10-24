@@ -2,7 +2,11 @@
 Modelo de Ising implementado en Fortran 90 como parte de la materia Introducción a la Simulación computacional.
 www.tandar.cnea.gov.ar/~pastorin/cursos/intro_sims/
 
-## Cómo correr la simulación
+#### Autores 
+  - Augusto Román [augustojre](https://github.com/augustoojre)
+  - Simón Saint-André [sstandre](https://github.com/sstandre)
+
+## Cómo correr una simulación
 
 - Editar el archivo `input.dat`. La primera línea tiene los nombres de las variables de ingreso y es ignorada por el programa. La segunda tiene los valores de las variables.
 - Compilar el programa de Fortran con `make`
@@ -60,11 +64,11 @@ Esto crea (o sobreescribe) el archivo `alldata.dat`, con el cual se pueden anali
 
 El notebook `analisis.ipynb` contiene los cálculos y las figuras realizadas con la información de `alldata.dat`. Al ejecutarlo se llama a `recopilar_data.py` para asegurarse de tener los datos actualizados.
 
-Para correr este notebook tenemos que usar Jupyter, que no está por defecto en Ubunutu. Podemos instalarlo en un entorno virtual:
+Para correr este notebook tenemos que usar Jupyter, que no está por defecto en Ubunutu. Puede ser instalado en un entorno virtual:
 
  - `sudo apt install python3-venv`
  - `python3 -m venv .venv`
  Con esto tenemos creado el entorno virtual, para usarlo lo activamos con:
  - `source .venv/bin/activate`
  Ahora podemos instalar Jupyter y otros paquetes mediante `pip`:
-  - `pip3 install -r requirements.txt`
+ - `pip3 install -r requirements.txt`
