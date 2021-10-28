@@ -36,7 +36,6 @@ HEADER = '\t'.join((
     'energy^2', 
     'magnetization',
     'magnetization^2',
-    'aceptados'
     ))+'\n'
 
 OUTFILE = 'alldata.dat'
